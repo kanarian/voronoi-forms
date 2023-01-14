@@ -118,14 +118,15 @@ function VoronoiDiagram({
 
           const closest = voronoiLayout.find(point.x, point.y);
           console.log(closest);
-          setHoveredId(closest?.data?.id! ?? null);
+          if (closest && closest.data) {
+            setHoveredId(closest.data.id);
+          }
 
           if (tooltipTimeout) clearTimeout(tooltipTimeout);
           // TooltipInPortal expects coordinates to be relative to containerRef
           // localPoint returns coordinates relative to the nearest SVG, which
           // is what containerRef is set to in this example.
           //   const eventSvgCoords = localPoint(event);
-          console.log("new tooltipdata is", closest?.data?.response);
           showTooltip({
             tooltipData: closest?.data?.response,
             tooltipTop: event.clientY,
@@ -177,7 +178,7 @@ function VoronoiDiagram({
           top={tooltipTop}
           left={tooltipLeft}
         >
-          {tooltipDataToShow && (`${tooltipNameToShow}` ?? "")}
+          {`${tooltipNameToShow}` ?? ""}
         </TooltipInPortal>
       )}
       <Modal open={open} setOpen={setOpen} thisResponse={currentResponse} />
