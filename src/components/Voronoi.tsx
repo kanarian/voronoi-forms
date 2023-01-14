@@ -118,7 +118,7 @@ function VoronoiDiagram({
 
           const closest = voronoiLayout.find(point.x, point.y);
           console.log(closest);
-          setHoveredId(closest?.data?.id!);
+          setHoveredId(closest?.data?.id! ?? null);
 
           if (tooltipTimeout) clearTimeout(tooltipTimeout);
           // TooltipInPortal expects coordinates to be relative to containerRef
@@ -177,7 +177,7 @@ function VoronoiDiagram({
           top={tooltipTop}
           left={tooltipLeft}
         >
-          {tooltipDataToShow && `${tooltipNameToShow}: ${tooltipAnswerToShow}`}
+          {tooltipDataToShow && (`${tooltipNameToShow}` ?? "")}
         </TooltipInPortal>
       )}
       <Modal open={open} setOpen={setOpen} thisResponse={currentResponse} />
