@@ -21,8 +21,8 @@ const Home: NextPage = () => {
   const { data, error, isLoading } = useQuery<IResponse[]>(
     "getAllResponses",
     async () => {
-      const allResponses = await fetch("/api/getallresponses").then(
-        (res) => res.json() as Promise<IResponse[]>
+      const allResponses = await fetch("/api/getallresponses").then((res) =>
+        res.json()
       );
       return allResponses as IResponse[];
     }

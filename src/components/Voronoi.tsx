@@ -178,7 +178,7 @@ function VoronoiDiagram({
           top={tooltipTop}
           left={tooltipLeft}
         >
-          {`${tooltipNameToShow}` ?? ""}
+          {`${tooltipNameToShow ?? ""}`}
         </TooltipInPortal>
       )}
       <Modal open={open} setOpen={setOpen} thisResponse={currentResponse} />
