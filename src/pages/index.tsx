@@ -11,7 +11,7 @@ export interface IQuestion {
   questionId: string;
   answer: string;
 }
-export interface IResponse extends Array<IQuestion> {}
+export type IResponse = IQuestion[];
 
 function min(a: number, b: number) {
   return a < b ? a : b;
