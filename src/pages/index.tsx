@@ -21,10 +21,10 @@ const Home: NextPage = () => {
   const { data, error, isLoading } = useQuery<IResponse[]>(
     "getAllResponses",
     async () => {
-      const allResponses = await fetch("/api/getallresponses").then((res) =>
+      const allResponses = (await fetch("/api/getallresponses").then((res) =>
         res.json()
-      );
-      return allResponses as IResponse[];
+      )) as IResponse[];
+      return allResponses;
     }
   );
   const { height, width } = useWindowDimensions();
