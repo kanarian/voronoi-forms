@@ -9,7 +9,7 @@ export default async function handler(
 ) {
   const { privateKey } = JSON.parse(
     process.env.GOOGLE_PRIVATE_KEY || "{ privateKey: null }"
-  );
+  ) as { privateKey: string };
   const authInit = new google.auth.GoogleAuth({
     scopes: SCOPES,
     projectId: process.env.GOOGLE_PROJECTID,
@@ -31,7 +31,7 @@ export default async function handler(
     })
     .then((response) => response.data);
 
-  const response = await responses.responses?.map((response) => {
+  const response = responses.responses?.map((response) => {
     const thisID = response.responseId;
     const thisAnswerIds = Object.keys(response.answers!);
     const thisAnswers = thisAnswerIds.map((thisAnswerId) => {
