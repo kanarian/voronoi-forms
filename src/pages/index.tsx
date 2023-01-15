@@ -49,7 +49,8 @@ const Home: NextPage = () => {
         <p>
           <a href="https://forms.gle/MjjQVo3JgRHBzsjx5">
             <a className="text-white hover:text-violet-400">
-              Spreekt voor zich. Vul deze form in om te delen wat jij denkt!
+              Spreekt voor zich. Klik <span className="underline">hier</span> en
+              vul deze form in om te delen wat jij denkt!
             </a>
           </a>
         </p>
