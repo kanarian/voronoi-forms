@@ -13,7 +13,7 @@ export default async function handler(
   ) as { privateKey: string };
   console.log("flag after pk getter");
   console.log("private key: ", privateKey);
-  const authInit = await new google.auth.GoogleAuth({
+  const authInit = new google.auth.GoogleAuth({
     scopes: SCOPES,
     projectId: process.env.GOOGLE_PROJECTID,
     credentials: {
