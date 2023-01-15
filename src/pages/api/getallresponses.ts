@@ -7,9 +7,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log("flag before pk getter");
   const { privateKey } = JSON.parse(
     process.env.GOOGLE_PRIVATE_KEY || "{ privateKey: null }"
   ) as { privateKey: string };
+  console.log("flag after pk getter");
+  console.log("private key: ", privateKey);
   const authInit = await new google.auth.GoogleAuth({
     scopes: SCOPES,
     projectId: process.env.GOOGLE_PROJECTID,
@@ -24,8 +27,6 @@ export default async function handler(
     version: "v1",
     auth: auth,
   });
-  console.log("flag2");
-  console.log(privateKey);
   const responses = await forms.forms.responses
     .list({
       formId: formId,
