@@ -7,6 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log("flag0");
   const { privateKey } = JSON.parse(
     process.env.GOOGLE_PRIVATE_KEY || "{ privateKey: null }"
   ) as { privateKey: string };
@@ -18,19 +19,20 @@ export default async function handler(
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
     },
   });
+  console.log("flag1");
   const auth = await authInit.getClient();
 
   const forms = google.forms({
     version: "v1",
     auth: auth,
   });
-
+  console.log("flag2");
   const responses = await forms.forms.responses
     .list({
       formId: formId,
     })
     .then((response) => response.data);
-
+  console.log("flag3");
   const response = responses.responses?.map((response) => {
     const thisID = response.responseId;
     const thisAnswerIds = Object.keys(response.answers!);
