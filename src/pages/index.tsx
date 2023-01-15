@@ -46,14 +46,12 @@ const Home: NextPage = () => {
         <h1 className="text-xl font-bold text-white lg:text-4xl">
           Wat zou jij op een billboard zetten?
         </h1>
-        <p>
-          <a href="https://forms.gle/MjjQVo3JgRHBzsjx5">
-            <a className="text-white hover:text-violet-400">
-              Spreekt voor zich. Klik <span className="underline">hier</span> en
-              vul deze form in om te delen wat jij denkt!
-            </a>
-          </a>
-        </p>
+        <a href="https://forms.gle/MjjQVo3JgRHBzsjx5">
+          <p className="px-4 text-white hover:text-violet-400">
+            Spreekt voor zich. Klik <span className="underline">hier</span> en
+            vul deze form in om te delen wat jij denkt!
+          </p>
+        </a>
         {generatedDataVoronoiMap && (
           <VoronoiDiagram
             data={generatedDataVoronoiMap}
