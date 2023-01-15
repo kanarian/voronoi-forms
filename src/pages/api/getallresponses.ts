@@ -11,7 +11,7 @@ export default async function handler(
   const { privateKey } = JSON.parse(
     process.env.GOOGLE_PRIVATE_KEY || "{ privateKey: null }"
   ) as { privateKey: string };
-  const authInit = new google.auth.GoogleAuth({
+  const authInit = await new google.auth.GoogleAuth({
     scopes: SCOPES,
     projectId: process.env.GOOGLE_PROJECTID,
     credentials: {
